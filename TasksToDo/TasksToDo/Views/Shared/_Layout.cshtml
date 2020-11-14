@@ -19,6 +19,21 @@
                     <span class="icon-bar"></span>
                 </button>
                 <a asp-controller="Tasks" asp-action="Index" class="navbar-brand">Tasks</a>
+                <ul class="nav navbar-nav navbar-right">
+                    @if (User.Identity.IsAuthenticated)
+                    {
+            <li>
+                @*<form class="form-logout" method="post" asp-controller="Auth" asp-action="Logout">
+            <button class="btn btn-default btn-sm" type="submit">Logout</button>
+        </form>*@
+                <a>Logout</a>
+            </li> }
+                        else
+                        {
+            <li>
+                <a asp-controller="Auth" asp-action="Login">Login</a>
+            </li>}
+                </ul>
             </div>
         </div>
     </nav>

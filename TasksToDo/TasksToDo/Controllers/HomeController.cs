@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
@@ -6,10 +8,12 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using TasksToDo.Models;
+using TasksToDo.ViewModels.Login;
 using TasksToDo.ViewModels.Tasks;
 
 namespace TasksToDo.Controllers
 {
+    
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
@@ -21,9 +25,12 @@ namespace TasksToDo.Controllers
 
         public IActionResult Index(TasksIndexViewModelQuery query)
         {
+           
             return RedirectToAction("Index", "Tasks");
+           
         }
 
+       
         public IActionResult Privacy()
         {
             return View();

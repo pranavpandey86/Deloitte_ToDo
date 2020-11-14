@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -9,6 +10,7 @@ using TasksToDo.ViewModels.Tasks;
 
 namespace TasksToDo.Controllers
 {
+    [Authorize]
     public class TasksController : Controller
     {
         private readonly IMediator _mediator;
@@ -26,6 +28,17 @@ namespace TasksToDo.Controllers
         {
             var model = await _mediator.Send(query);
             model.NotificationMessage = TempData[NotificationMessageKey] as string;
+            return View(model);
+        }
+
+        public async Task<IActionResult> Edit(TasksEditViewModelQuery query)
+        {
+            var model = await _mediator.Send(query);
+            if (model.Id == 0)
+            {
+                return NotFound();
+            }
+
             return View(model);
         }
     }
