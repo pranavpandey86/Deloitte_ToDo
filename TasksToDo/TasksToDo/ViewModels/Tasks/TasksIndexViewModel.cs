@@ -18,6 +18,8 @@ namespace TasksToDo.ViewModels.Tasks
             public bool IsComplete { get; set; }
 
             public int UserId { get; set; }
+
+            public string LastUpdatedDateTime { get; set; }
         }
     }
 }

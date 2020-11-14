@@ -27,6 +27,7 @@ namespace TasksToDo.Commands.Tasks.Handlers
             if (command.IsAdding)
             {
                 task = new Models.TaskToDo(command.Description, user.UserId);
+                task.LastUpdatedDateTime = DateTime.Now.ToString();
                 Context.Tasks.Add(task);
             }
             else
@@ -53,12 +54,14 @@ namespace TasksToDo.Commands.Tasks.Handlers
                      taskUserId = Convert.ToInt32(loggedUser);
                 }
                 task = new Models.TaskToDo(request.Description, taskUserId);
+                task.LastUpdatedDateTime = DateTime.Now.ToString();
                 Context.Tasks.Add(task);
             }
             else
             {
                 var user = await GetCategory(request.Id);
                 task = await GetTask(request.Id);
+                task.LastUpdatedDateTime = DateTime.Now.ToString();
                 task.SetDetails(request.Description, user.UserId);
             }
 

@@ -11,5 +11,7 @@ namespace TasksToDo.Commands.Tasks
         public string Description { get; set; }
 
         public int UserId { get; set; }
+
+        public string LastUpdatedDateTime { get; set; }
     }
 }

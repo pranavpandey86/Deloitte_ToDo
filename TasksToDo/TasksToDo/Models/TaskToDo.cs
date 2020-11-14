@@ -28,7 +28,7 @@ namespace TasksToDo.Models
 
         public bool IsComplete { get; private set; }
 
-
+        public string LastUpdatedDateTime { get; set; }
 
         public void SetDetails(string description, int userId)
         {

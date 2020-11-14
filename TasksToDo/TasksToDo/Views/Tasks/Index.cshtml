@@ -18,6 +18,7 @@
         <th>Status</th>
         <th>Task Description</th>
         <th>Actions</th>
+        <th>Last Updated History</th>
         <th></th>
     </tr>
 
@@ -36,10 +37,16 @@
         @Html.DisplayFor(modelItem => item.Description)
     </td>
 
+
+
     <td>
         <a asp-controller="Tasks" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
         |
         <a asp-controller="Tasks" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+    </td>
+
+    <td>
+        @Html.DisplayFor(modelItem => item.LastUpdatedDateTime)
     </td>
 </tr>
 }
