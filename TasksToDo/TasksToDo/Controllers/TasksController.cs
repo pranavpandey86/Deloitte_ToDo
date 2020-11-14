@@ -6,6 +6,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using TasksToDo.Commands.Tasks;
+using TasksToDo.ViewModels;
 using TasksToDo.ViewModels.Tasks;
 
 namespace TasksToDo.Controllers
@@ -31,12 +33,39 @@ namespace TasksToDo.Controllers
             return View(model);
         }
 
+        public async Task<IActionResult> Add()
+        {
+            var model = await _mediator.Send(new TasksEditViewModelQuery());
+            return View("Edit", model);
+        }
+
+
         public async Task<IActionResult> Edit(TasksEditViewModelQuery query)
         {
             var model = await _mediator.Send(query);
             if (model.Id == 0)
             {
                 return NotFound();
+            }
+
+            return View(model);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Edit(TasksEditViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var command = new TaskAddOrEditCommand();
+                _mapper.Map(model, command);
+                var result = await _mediator.Send(command);
+                if (result.Success)
+                {
+                    TempData[NotificationMessageKey] = $"Task {(model.IsAdding ? "created" : "updated")}";
+                    return RedirectToAction("Index");
+                }
+
+                ModelState.AddModelError(string.Empty, result.ErrorMessage);
             }
 
             return View(model);

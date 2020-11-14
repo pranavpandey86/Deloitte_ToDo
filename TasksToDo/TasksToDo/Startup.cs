@@ -16,6 +16,7 @@ using MediatR;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using TasksToDo.Models;
 using TasksToDo.Services;
+using Microsoft.AspNetCore.Http;
 
 namespace TasksToDo
 {
@@ -43,6 +44,7 @@ namespace TasksToDo
             services.AddSession(options => {
                 options.IdleTimeout = TimeSpan.FromMinutes(1);//You can set Time   
             });
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddSingleton(_users);
             services.AddTransient<IUserService, UserService>();
             services.AddDbContext<DataContext>(opt =>

@@ -3,7 +3,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using TasksToDo.Commands.Tasks;
 using TasksToDo.Models;
+using TasksToDo.ViewModels;
 using static TasksToDo.ViewModels.Tasks.TasksIndexViewModel;
 
 namespace TasksToDo.Mapper
@@ -13,10 +15,10 @@ namespace TasksToDo.Mapper
         public TasksProfile()
         {
             CreateMap<TaskToDo, TaskListEntry>();
-            //CreateMap<Task, TasksEditViewModel>();
+            CreateMap<TaskToDo, TasksEditViewModel>();
             //CreateMap<Task, TasksDeleteViewModel>();
 
-            //CreateMap<TasksEditViewModel, TaskAddOrEditCommand>();
+            CreateMap<TasksEditViewModel, TaskAddOrEditCommand>();
             //CreateMap<TasksDeleteViewModel, TaskDeleteCommand>();
         }
     }

@@ -12,9 +12,9 @@ namespace TasksToDo.Models
         {
         }
 
-        public TaskToDo(string description)
+        public TaskToDo(string description, int userId)
         {
-            SetDetails(description);
+            SetDetails(description,userId);
         }
 
         public int Id { get; set; }
@@ -30,9 +30,10 @@ namespace TasksToDo.Models
 
 
 
-        public void SetDetails(string description)
+        public void SetDetails(string description, int userId)
         {
             Description = description;
+            UserId = userId;
 
         }
 

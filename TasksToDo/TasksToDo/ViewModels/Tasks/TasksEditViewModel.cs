@@ -12,8 +12,12 @@ namespace TasksToDo.ViewModels
         [StringLength(500, ErrorMessage = "The description cannot be longer than 500 characters")]
         public string Description { get; set; }
 
-        
+        [Required]
+        [Display(Name = "UserId")]
+        public int UserId { get; set; }
 
-       
+
+        public bool IsComplete { get; private set; }
+
     }
 }

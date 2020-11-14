@@ -33,12 +33,12 @@ namespace TasksToDo.ViewModels.Tasks
         public async Task<TasksEditViewModel> Handle(TasksEditViewModelQuery request, CancellationToken cancellationToken)
         {
             var model = new TasksEditViewModel();
-            model.Id = 1;
-          /*  if (request.Id > 0)
+            //model.Id = 1;
+            if (request.Id > 0)
             {
                 var task = await GetTask(request.Id);
                 Mapper.Map(task, model);
-            } */
+            } 
 
 
 
