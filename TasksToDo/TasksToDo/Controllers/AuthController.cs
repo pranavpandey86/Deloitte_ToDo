@@ -20,7 +20,7 @@ namespace TasksToDo.Controllers
         {
             _userService = userService;
         }
-      
+
         public IActionResult Login(string returnUrl)
         {
             return View(new LoginViewModel
@@ -29,7 +29,7 @@ namespace TasksToDo.Controllers
             });
         }
 
-      
+
         [HttpPost]
         public async Task<IActionResult> Login(LoginViewModel model)
         {
@@ -49,25 +49,22 @@ namespace TasksToDo.Controllers
             return View(model);
         }
 
-        
-        
+
+
         public async Task<IActionResult> Logout(LoginViewModel model)
         {
             await HttpContext.SignOutAsync();
-            
-            return RedirectToAction("Login", "Auth");
-            
 
-            //return View(model);
+            return RedirectToAction("Login", "Auth");
+
+
         }
 
         private async Task LoginAsync(Users user)
         {
             var properties = new AuthenticationProperties
             {
-                //AllowRefresh = false,
-                //IsPersistent = true,
-                //ExpiresUtc = DateTimeOffset.UtcNow.AddSeconds(10)
+
             };
             var claims = new List<Claim>
             {
