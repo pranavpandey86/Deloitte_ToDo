@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using TasksToDo.Commands.Tasks;
+using TasksToDo.Commands.Tasks.Handlers;
 using TasksToDo.ViewModels;
 using TasksToDo.ViewModels.Tasks;
 
@@ -69,6 +70,32 @@ namespace TasksToDo.Controllers
             }
 
             return View(model);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> UpdateStatus(int id, bool completed, int? categoryId)
+        {
+            if (completed)
+            {
+                var command = new TaskCompleteCommand
+                {
+                    Id = id,
+                };
+                await _mediator.Send(command);
+                TempData[NotificationMessageKey] = $"Task marked as completed";
+            }
+           /* else
+            {
+                var command = new TaskResetCommand
+                {
+                    Id = id,
+                };
+                await _mediator.SendAsync(command);
+                TempData[NotificationMessageKey] = $"Task reset";
+            }
+           */
+
+            return RedirectToAction("Index", categoryId.HasValue ? new { CategoryId = categoryId.Value } : null);
         }
     }
 }

@@ -20,26 +20,7 @@ namespace TasksToDo.Commands.Tasks.Handlers
             _accessor = httpContext;
         }
 
-        public async Task<CommandResult<int>> Handle1(TaskAddOrEditCommand command)
-        {
-            var user = await GetCategory(command.UserId);
-            Models.TaskToDo task;
-            if (command.IsAdding)
-            {
-                task = new Models.TaskToDo(command.Description, user.UserId);
-                task.LastUpdatedDateTime = DateTime.Now.ToString();
-                Context.Tasks.Add(task);
-            }
-            else
-            {
-                task = await GetTask(command.Id);
-                task.SetDetails(command.Description, user.UserId);
-            }
-
-            await Context.SaveChangesAsync();
-
-            return CommandResult<int>.SuccessResult(task.Id);
-        }
+    
 
         public async Task<CommandResult<int>> Handle(TaskAddOrEditCommand request, CancellationToken cancellationToken)
         {
@@ -59,7 +40,7 @@ namespace TasksToDo.Commands.Tasks.Handlers
             }
             else
             {
-                var user = await GetCategory(request.Id);
+                var user = await GetTasks(request.Id);
                 task = await GetTask(request.Id);
                 task.LastUpdatedDateTime = DateTime.Now.ToString();
                 task.SetDetails(request.Description, user.UserId);
@@ -70,7 +51,7 @@ namespace TasksToDo.Commands.Tasks.Handlers
             return CommandResult<int>.SuccessResult(task.Id);
         }
 
-        private async Task<TaskToDo> GetCategory(int id)
+        private async Task<TaskToDo> GetTasks(int id)
         {
             var task = await Context.Tasks
                 .SingleOrDefaultAsync(x => x.Id == id);
