@@ -20,7 +20,7 @@ namespace TasksToDo.Controllers
         {
             _userService = userService;
         }
-       // [Route("login")]
+      
         public IActionResult Login(string returnUrl)
         {
             return View(new LoginViewModel
@@ -29,9 +29,8 @@ namespace TasksToDo.Controllers
             });
         }
 
-       // [Route("login")]
+      
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Login(LoginViewModel model)
         {
             if (ModelState.IsValid)
@@ -41,11 +40,6 @@ namespace TasksToDo.Controllers
                 {
                     await LoginAsync(user);
                     HttpContext.Session.SetString("LoggedUser", user.UserId.ToString());
-                    // if (IsUrlValid(model.ReturnUrl))
-                    // {
-                    //    return Redirect(model.ReturnUrl);
-                    //}
-                    var loggedUser = HttpContext.Session.GetString("LoggedUser");
                     return RedirectToAction("Index", "Home");
                 }
 

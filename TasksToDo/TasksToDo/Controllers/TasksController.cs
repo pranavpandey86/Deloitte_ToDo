@@ -84,16 +84,16 @@ namespace TasksToDo.Controllers
                 await _mediator.Send(command);
                 TempData[NotificationMessageKey] = $"Task marked as completed";
             }
-           /* else
+            else
             {
                 var command = new TaskResetCommand
                 {
                     Id = id,
                 };
-                await _mediator.SendAsync(command);
+                await _mediator.Send(command);
                 TempData[NotificationMessageKey] = $"Task reset";
             }
-           */
+           
 
             return RedirectToAction("Index", categoryId.HasValue ? new { CategoryId = categoryId.Value } : null);
         }
