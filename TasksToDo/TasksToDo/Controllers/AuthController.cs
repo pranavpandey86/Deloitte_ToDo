@@ -55,6 +55,18 @@ namespace TasksToDo.Controllers
             return View(model);
         }
 
+        
+        
+        public async Task<IActionResult> Logout(LoginViewModel model)
+        {
+            await HttpContext.SignOutAsync();
+            
+            return RedirectToAction("Login", "Auth");
+            
+
+            //return View(model);
+        }
+
         private async Task LoginAsync(Users user)
         {
             var properties = new AuthenticationProperties
