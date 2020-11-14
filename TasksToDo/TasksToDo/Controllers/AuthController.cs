@@ -40,7 +40,7 @@ namespace TasksToDo.Controllers
                 {
                     await LoginAsync(user);
                     HttpContext.Session.SetString("LoggedUser", user.UserId.ToString());
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Index", "Tasks");
                 }
 
                 ModelState.AddModelError("InvalidCredentials", "Invalid credentials.");
