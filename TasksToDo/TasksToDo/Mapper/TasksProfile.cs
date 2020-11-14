@@ -4,7 +4,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using TasksToDo.Commands.Tasks;
+using TasksToDo.Commands.Tasks.Handlers;
 using TasksToDo.Models;
+using TasksToDo.Queries;
 using TasksToDo.ViewModels;
 using static TasksToDo.ViewModels.Tasks.TasksIndexViewModel;
 
@@ -16,10 +18,10 @@ namespace TasksToDo.Mapper
         {
             CreateMap<TaskToDo, TaskListEntry>();
             CreateMap<TaskToDo, TasksEditViewModel>();
-            //CreateMap<Task, TasksDeleteViewModel>();
+            CreateMap<TaskToDo, TasksDeleteViewModel>();
 
             CreateMap<TasksEditViewModel, TaskAddOrEditCommand>();
-            //CreateMap<TasksDeleteViewModel, TaskDeleteCommand>();
+            CreateMap<TasksDeleteViewModel, TaskDeleteCommand>();
         }
     }
 }
