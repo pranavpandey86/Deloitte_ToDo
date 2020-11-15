@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.30709.132
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TasksToDo", "TasksToDo\TasksToDo.csproj", "{43C8973D-7652-48E7-8C2C-70F0C023E161}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TasksToDoTests", "TasksToDoTests\TasksToDoTests.csproj", "{3040BD90-1467-41D1-9BB1-EFEEFFAAE4C7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TasksToDoTests", "TasksToDoTests\TasksToDoTests.csproj", "{3040BD90-1467-41D1-9BB1-EFEEFFAAE4C7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

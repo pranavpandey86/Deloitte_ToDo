@@ -20,17 +20,15 @@ namespace TasksToDo.Controllers.Tests
             //Arrange -->
             var User = new Users { UserId = 1, Pwd = "1234" };
             var userServiceMock = new Mock<IUserService>();
-
-
             userServiceMock.Setup(p => p.ValidateUserCredentialsAsync(It.IsAny<string>(), It.IsAny<string>())).ReturnsAsync((true, User));
-
             AuthController auth = new AuthController(userServiceMock.Object);
             LoginViewModel loginVM = new LoginViewModel();
-
             auth.ControllerContext.HttpContext = new DefaultHttpContext();
 
+            //ACT
             var test = auth.Login(loginVM);
 
+            //ASSERT
             Assert.IsNotNull(test);
         }
 
@@ -69,7 +67,7 @@ namespace TasksToDo.Controllers.Tests
 
             auth.ControllerContext.HttpContext = new DefaultHttpContext();
 
-            var test = auth.Login("");
+            var test = auth.Login("test");
 
             Assert.IsNotNull(test);
         }
