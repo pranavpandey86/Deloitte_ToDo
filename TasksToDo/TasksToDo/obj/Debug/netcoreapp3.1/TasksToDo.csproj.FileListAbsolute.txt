@@ -81,3 +81,4 @@ C:\POCs and CodeSnippets\ToDo_Deloitte\TasksToDo\TasksToDo\obj\Debug\netcoreapp3
 C:\POCs and CodeSnippets\ToDo_Deloitte\TasksToDo\TasksToDo\obj\Debug\netcoreapp3.1\TasksToDo.dll
 C:\POCs and CodeSnippets\ToDo_Deloitte\TasksToDo\TasksToDo\obj\Debug\netcoreapp3.1\TasksToDo.pdb
 C:\POCs and CodeSnippets\ToDo_Deloitte\TasksToDo\TasksToDo\obj\Debug\netcoreapp3.1\TasksToDo.genruntimeconfig.cache
+C:\POCs and CodeSnippets\ToDo_Deloitte\TasksToDo\TasksToDo\obj\Debug\netcoreapp3.1\TasksToDo.csprojAssemblyReference.cache
