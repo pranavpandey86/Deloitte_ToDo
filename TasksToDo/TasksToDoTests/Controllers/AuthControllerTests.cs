@@ -19,12 +19,12 @@ namespace TasksToDo.Controllers.Tests
         {
             //Arrange -->
             var User = new Users { UserId = 1, Pwd = "1234" };
-            var distanceServiceMock = new Mock<IUserService>();
+            var userServiceMock = new Mock<IUserService>();
 
 
-            distanceServiceMock.Setup(p => p.ValidateUserCredentialsAsync(It.IsAny<string>(), It.IsAny<string>())).ReturnsAsync((true, User));
+            userServiceMock.Setup(p => p.ValidateUserCredentialsAsync(It.IsAny<string>(), It.IsAny<string>())).ReturnsAsync((true, User));
 
-            AuthController auth = new AuthController(distanceServiceMock.Object);
+            AuthController auth = new AuthController(userServiceMock.Object);
             LoginViewModel loginVM = new LoginViewModel();
 
             auth.ControllerContext.HttpContext = new DefaultHttpContext();
@@ -40,9 +40,9 @@ namespace TasksToDo.Controllers.Tests
         {
             //Arrange -->
             var User = new Users { UserId = 1, Pwd = "1234" };
-            var distanceServiceMock = new Mock<IUserService>();
-            distanceServiceMock.Setup(p => p.ValidateUserCredentialsAsync(It.IsAny<string>(), It.IsAny<string>())).ReturnsAsync((true, User));
-            AuthController auth = new AuthController(distanceServiceMock.Object);
+            var userServiceMock = new Mock<IUserService>();
+            userServiceMock.Setup(p => p.ValidateUserCredentialsAsync(It.IsAny<string>(), It.IsAny<string>())).ReturnsAsync((true, User));
+            AuthController auth = new AuthController(userServiceMock.Object);
             LoginViewModel loginVM = new LoginViewModel();
 
             auth.ControllerContext.HttpContext = new DefaultHttpContext();
@@ -59,12 +59,12 @@ namespace TasksToDo.Controllers.Tests
         {
             //Arrange -->
             var User = new Users { UserId = 1, Pwd = "1234" };
-            var distanceServiceMock = new Mock<IUserService>();
+            var userServiceMock = new Mock<IUserService>();
 
 
-            distanceServiceMock.Setup(p => p.ValidateUserCredentialsAsync(It.IsAny<string>(), It.IsAny<string>())).ReturnsAsync((true, User));
+            userServiceMock.Setup(p => p.ValidateUserCredentialsAsync(It.IsAny<string>(), It.IsAny<string>())).ReturnsAsync((true, User));
 
-            AuthController auth = new AuthController(distanceServiceMock.Object);
+            AuthController auth = new AuthController(userServiceMock.Object);
             LoginViewModel loginVM = new LoginViewModel();
 
             auth.ControllerContext.HttpContext = new DefaultHttpContext();
