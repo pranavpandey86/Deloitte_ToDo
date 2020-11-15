@@ -51,7 +51,6 @@ namespace TasksToDo.Controllers.Tests
 
 
 
-            //Assert.Fail();
         }
 
         [TestMethod()]
@@ -75,8 +74,6 @@ namespace TasksToDo.Controllers.Tests
 
 
 
-
-            //Assert.Fail();
         }
 
         [TestMethod()]
@@ -94,11 +91,7 @@ namespace TasksToDo.Controllers.Tests
 
             var tasksController = new TasksController(mediatRMock.Object, mapperMock.Object);
 
-           // tasksController.ControllerContext.HttpContext = new DefaultHttpContext();
-           // var httpContext = tasksController.ControllerContext.HttpContext;
-           // var tempData = new TempDataDictionary(httpContext, Mock.Of<ITempDataProvider>());
-           // tempData["NotificationMessage"] = "admin";
-           // tasksController.TempData = tempData;
+          
 
             var actionResult = tasksController.Edit(query);
             actionResult.Wait();
@@ -108,7 +101,7 @@ namespace TasksToDo.Controllers.Tests
 
 
 
-            //Assert.Fail();
+           
         }
 
         [TestMethod()]
@@ -137,12 +130,12 @@ namespace TasksToDo.Controllers.Tests
             var actionResult = tasksController.Edit(tVM);
             actionResult.Wait();
             var viewResult = actionResult.Result as object;
+
             Assert.IsNotNull(viewResult);
 
 
 
 
-            //Assert.Fail();
         }
     }
 }
